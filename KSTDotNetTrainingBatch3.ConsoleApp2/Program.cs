@@ -4,12 +4,15 @@ using System.Data;
 
 Console.WriteLine("Hello, World!");
 
-SqlConnectionStringBuilder sqlConnectionStringBuilder = new SqlConnectionStringBuilder();
-sqlConnectionStringBuilder.DataSource = ".";
-sqlConnectionStringBuilder.UserID = "sa";
-sqlConnectionStringBuilder.Password = "sa@123";
-sqlConnectionStringBuilder.TrustServerCertificate = true;
-sqlConnectionStringBuilder.InitialCatalog = "MiniPOS";
+SqlConnectionStringBuilder sqlConnectionStringBuilder = new SqlConnectionStringBuilder()
+{
+    DataSource = ".",
+    UserID = "sa",
+    Password = "sa@123",
+    TrustServerCertificate = true,
+    InitialCatalog = "MiniPOS"
+};
+
 
 SqlConnection connection = new SqlConnection(sqlConnectionStringBuilder.ConnectionString);
 
