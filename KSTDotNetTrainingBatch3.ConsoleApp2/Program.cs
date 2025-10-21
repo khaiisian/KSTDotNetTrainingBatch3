@@ -50,3 +50,10 @@ ProductService productService = new ProductService();
 //productService.Delete();
 #endregion
 
+#region ProductDapperService
+ProductDapperService dapperService = new ProductDapperService();
+dapperService.Delete();
+//dapperService.Update();
+//dapperService.Create();
+dapperService.Read();
+#endregion

@@ -57,7 +57,7 @@ public class ProductService
            ,[Price]
            ,[DeleteFlag])
      VALUES
-           ('Apple'
+           ('Lemon'
            ,20
            ,2500
            ,0)";
