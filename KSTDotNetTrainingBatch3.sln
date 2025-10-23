@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KSTDotNetTrainingBatch3.Con
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KSTDotNetTrainingBatch3.ConsoleApp2", "KSTDotNetTrainingBatch3.ConsoleApp2\KSTDotNetTrainingBatch3.ConsoleApp2.csproj", "{3C8817E8-8589-49C8-90ED-265B95F1DD6E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KSTDotNetTrainingBatch3.Database", "KSTDotNetTrainingBatch3.Database\KSTDotNetTrainingBatch3.Database.csproj", "{C7A3FA58-F3B9-4734-984E-66E0DDB4895E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{3C8817E8-8589-49C8-90ED-265B95F1DD6E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3C8817E8-8589-49C8-90ED-265B95F1DD6E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3C8817E8-8589-49C8-90ED-265B95F1DD6E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C7A3FA58-F3B9-4734-984E-66E0DDB4895E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C7A3FA58-F3B9-4734-984E-66E0DDB4895E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C7A3FA58-F3B9-4734-984E-66E0DDB4895E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C7A3FA58-F3B9-4734-984E-66E0DDB4895E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

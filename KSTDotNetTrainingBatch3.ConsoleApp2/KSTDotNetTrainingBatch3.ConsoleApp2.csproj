@@ -22,4 +22,8 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\KSTDotNetTrainingBatch3.Database\KSTDotNetTrainingBatch3.Database.csproj" />
+  </ItemGroup>
+
 </Project>

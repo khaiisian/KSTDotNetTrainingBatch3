@@ -51,9 +51,25 @@ ProductService productService = new ProductService();
 #endregion
 
 #region ProductDapperService
-ProductDapperService dapperService = new ProductDapperService();
-dapperService.Delete();
+//ProductDapperService dapperService = new ProductDapperService();
+//dapperService.Delete();
 //dapperService.Update();
 //dapperService.Create();
-dapperService.Read();
+//dapperService.Read();
+#endregion
+
+#region ProductEFCoreService
+//ProductEFCoreService productEFCoreService = new ProductEFCoreService();
+//productEFCoreService.Create();
+//productEFCoreService.Update();
+//productEFCoreService.Delete();
+//productEFCoreService.Read();
+#endregion
+
+#region ProductCategoryEFCoreService
+ProductCategoryEFCoreService productCategoryEFCoreService = new ProductCategoryEFCoreService();
+//productCategoryEFCoreService.Create();
+//productCategoryEFCoreService.Update();
+productCategoryEFCoreService.Delete();
+productCategoryEFCoreService.Read();
 #endregion
