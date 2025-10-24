@@ -1,24 +1,25 @@
-﻿using System;
+﻿using KSTDotNetTrainingBatch3.Database.AppDbContextModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace KSTDotNetTrainingBatch3.ConsoleApp2;
+namespace KSTDotNetTrainingBatch3.ConsoleApp3.EFCore;
 
 public class ProductEFCoreService
 {
     #region Read
     public void Read()
     {
-        ModelFirstAppDbContext _appDbContext = new ModelFirstAppDbContext();
-        var list = _appDbContext.Products
-                    .Where(x=>x.DeleteFlag == false)
+        AppDbContext _appDbContext = new AppDbContext();
+        var list = _appDbContext.TblProducts
+                    .Where(x => x.DeleteFlag == false)
                     .ToList();
 
         for (int i = 0; i < list.Count; i++)
         {
-            Console.WriteLine("Product Id => " + list[i].ProductID);
+            Console.WriteLine("Product Id => " + list[i].ProductId);
             Console.WriteLine("Product Name => " + list[i].ProductName);
             Console.WriteLine("Product Price => " + list[i].Price);
             Console.WriteLine("Product Quantity => " + list[i].Quantity);
@@ -29,8 +30,8 @@ public class ProductEFCoreService
     #region Create
     public void Create()
     {
-        ModelFirstAppDbContext _appDbContext = new ModelFirstAppDbContext();
-        var product = new Tbl_Product
+        AppDbContext _appDbContext = new AppDbContext();
+        var product = new TblProduct
         {
             ProductName = "New Product",
             Quantity = 500,
@@ -39,7 +40,7 @@ public class ProductEFCoreService
             CreatedDateTime = DateTime.Now,
         };
 
-        _appDbContext.Products.Add(product);
+        _appDbContext.TblProducts.Add(product);
         int result = _appDbContext.SaveChanges();
 
         var message = result > 0 ? "Create Successful" : "Create Failed";
@@ -50,15 +51,15 @@ public class ProductEFCoreService
     #region Update
     public void Update()
     {
-        ModelFirstAppDbContext _appDbContext = new ModelFirstAppDbContext();
-        var product = _appDbContext.Products.FirstOrDefault(x => x.ProductID == 2 && x.DeleteFlag == false);
-        if(product is null)
+        AppDbContext _appDbContext = new AppDbContext();
+        var product = _appDbContext.TblProducts.FirstOrDefault(x => x.ProductId == 12 && x.DeleteFlag == false);
+        if (product is null)
         {
             Console.WriteLine("No item found.");
             return;
         }
 
-        product.ProductName = "Updated Name";
+        product.ProductName = "Updated Item";
         product.ModifiedDateTime = DateTime.Now;
         int result = _appDbContext.SaveChanges();
 
@@ -70,9 +71,9 @@ public class ProductEFCoreService
     #region Delete
     public void Delete()
     {
-        ModelFirstAppDbContext _appDbContext = new ModelFirstAppDbContext();
+        AppDbContext _appDbContext = new AppDbContext();
 
-        var product = _appDbContext.Products.FirstOrDefault(x => x.ProductID == 1 && x.DeleteFlag == false);
+        var product = _appDbContext.TblProducts.FirstOrDefault(x => x.ProductId == 15 && x.DeleteFlag == false);
         if (product is null)
         {
             Console.WriteLine("No item found.");
@@ -87,3 +88,4 @@ public class ProductEFCoreService
     }
     #endregion
 }
+

@@ -4,11 +4,10 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
-using System.Reflection.Metadata;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace KSTDotNetTrainingBatch3.ConsoleApp2;
+namespace KSTDotNetTrainingBatch3.ConsoleApp3.Dapper;
 
 public class ProductDapperService
 {
@@ -31,13 +30,15 @@ public class ProductDapperService
                       ,[Quantity]
                       ,[Price]
                       ,[DeleteFlag]
-                       FROM [dbo].[Tbl_Product]";
+                       FROM [dbo].[Tbl_Product]
+                       WHERE DeleteFlag = 0";
 
             db.Open();
 
             List<ProductDTO> prodcutList = db.Query<ProductDTO>(query).ToList();
-            foreach (var item in prodcutList)
+            for (int i = 0; i < prodcutList.Count; i++)
             {
+                var item = prodcutList[i];
                 Console.WriteLine("Product Id => " + item.ProductID);
                 Console.WriteLine("Product Name => " + item.ProductName);
                 Console.WriteLine("Product Quantity => " + item.Quantity);
@@ -54,15 +55,15 @@ public class ProductDapperService
         {
             db.Open();
             string query = @"INSERT INTO [dbo].[Tbl_Product]
-           ([ProductName]
-           ,[Quantity]
-           ,[Price]
-           ,[DeleteFlag])
-     VALUES
-           ('Pineapple'
-           ,20
-           ,2500
-           ,0)";
+                                   ([ProductName]
+                                   ,[Quantity]
+                                   ,[Price]
+                                   ,[DeleteFlag])
+                             VALUES
+                                   ('Hot Wheel'
+                                   ,20
+                                   ,2500
+                                   ,0)";
 
             var result = db.Execute(query);
             string message = result > 0 ? "Create Successful!" : "Create Failed!";
@@ -74,18 +75,16 @@ public class ProductDapperService
     #region Update
     public void Update()
     {
-        using(IDbConnection db = new SqlConnection(sqlConnectionStringBuilder.ConnectionString))
+        using (IDbConnection db = new SqlConnection(sqlConnectionStringBuilder.ConnectionString))
         {
             db.Open();
 
             string query = @"UPDATE [dbo].[Tbl_Product]
-                       SET [ProductName] = 'Lemon'
-                          ,[Quantity] = 5
+                          SET [Quantity] = 50
                           ,[Price] = 3500
-                          ,[DeleteFlag] = 0
-                        WHERE ProductId = 5";
+                        WHERE ProductId = 7 AND DeleteFlag = 0";
 
-            int result = db.Execute(query); 
+            int result = db.Execute(query);
             var message = result > 0 ? "Update Successful!" : "Update Failed";
             Console.WriteLine(message);
         }
@@ -99,13 +98,12 @@ public class ProductDapperService
         {
             db.Open();
 
-            string query = @"DELETE FROM [dbo].[Tbl_Product]
-      WHERE ProductId = 6";
+            string query = @"UPDATE Tbl_Product SET DeleteFlag = 1 Where ProductId = 14";
             var result = db.Execute(query);
 
             var message = result > 0 ? "Delete Successful!" : "Delete Failed!";
             Console.WriteLine(message);
-        }        
+        }
     }
     #endregion
 }

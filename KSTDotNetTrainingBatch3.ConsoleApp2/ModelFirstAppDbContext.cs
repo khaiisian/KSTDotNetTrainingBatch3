@@ -37,6 +37,6 @@ public class Tbl_Product
     public int Quantity { get; set; }
     public decimal Price { get; set; }
     public bool DeleteFlag { get; set; }
-    public DateTime? CreatedAt { get; set; }
-    public DateTime? ModifiedAt { get; set; }
+    public DateTime? CreatedDateTime { get; set; }
+    public DateTime? ModifiedDateTime { get; set; }
 }
