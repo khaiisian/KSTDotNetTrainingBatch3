@@ -53,7 +53,6 @@ public class ProductController : ControllerBase
 
         _dbContext.TblProducts.Add(item);
         int result = _dbContext.SaveChanges();
-
         string msg = result > 0 ? "Create successful" : "Create failed";
         return Ok(msg);
     }
@@ -73,8 +72,9 @@ public class ProductController : ControllerBase
         item.ProductName = requestDto.ProductName;
         item.Price = requestDto.Price;
         item.Quantity = requestDto.Quantity;
-        int result = _dbContext.SaveChanges();
+        item.ModifiedDateTime = DateTime.Now;
 
+        int result = _dbContext.SaveChanges();
         string msg = result > 0 ? "Update successful" : "Update failed";
         return Ok(msg);
     }
@@ -103,8 +103,9 @@ public class ProductController : ControllerBase
         {
             item.Quantity = requestDto.Quantity ?? 0;
         }
-        int result = _dbContext.SaveChanges();
+        item.ModifiedDateTime = DateTime.Now;
 
+        int result = _dbContext.SaveChanges();
         string msg = result > 0 ? "Patch successful" : "Patch failed";
         return Ok(msg);
     }
@@ -122,6 +123,7 @@ public class ProductController : ControllerBase
         }
 
         item.DeleteFlag = true;
+        item.ModifiedDateTime = DateTime.Now;
         
         int result = _dbContext.SaveChanges();
         string msg = result > 0 ? "Delete successful" : "Delete failed";
